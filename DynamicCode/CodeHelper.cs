@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Reflection;
 using Microsoft.CSharp;
 
 namespace DynamicCode
@@ -25,6 +26,8 @@ namespace DynamicCode
             parameters.ReferencedAssemblies.Add("system.dll");
             parameters.ReferencedAssemblies.Add("System.Windows.Forms.dll");
             parameters.ReferencedAssemblies.Add("System.Core.dll");
+            parameters.ReferencedAssemblies.Add(Assembly.GetExecutingAssembly().Location);
+            parameters.ReferencedAssemblies.Add(typeof(System.Data.Entity.DbContext).Assembly.Location);
 
             //----------------
             // Add all extra assemblies required
